@@ -1,19 +1,29 @@
-import React from 'react'
-import { heroes } from '../../data/heroes'
+import React, { useMemo } from 'react';
+import queryString from 'query-string'
+
 import HeroCard from '../heroes/HeroCard';
 import useForm from '../../hooks/useForm';
+import { useLocation } from 'react-router';
+import { getHeroesByName } from '../../selectors/getHeroesByName';
 
-const SearchScreen = () => {
+const SearchScreen = ({ history }) => {
 
-    const heroesFiltered = heroes;
+    const location = useLocation();
+
+    const { q = '' } = queryString.parse( location.search )
     
     const [ { searchText }, handleInputChange ] = useForm({
-        searchText: ''
-    })
+        searchText: q
+    });
 
+    
+    const filteredHeroes = useMemo( () =>  getHeroesByName( q ), [ q ] )
+
+
+    
     const handleSearch = (e) => {
         e.preventDefault();
-        console.log( searchText );
+        history.push(`?q=${ searchText }`)
     }
     
     
@@ -30,6 +40,7 @@ const SearchScreen = () => {
 
                     <form
                         onSubmit={ handleSearch }
+                        className="d-grid"
                     >
 
                         <input
@@ -59,7 +70,23 @@ const SearchScreen = () => {
                     <hr />
 
                     {
-                        heroesFiltered.map( hero => (
+                        (q === '' )
+                            &&
+                            <div className="alert alert-info">
+                                Search a Hero
+                            </div>
+                    }
+
+                    {
+                        (q !== '' && filteredHeroes.length === 0 )
+                            &&
+                            <div className="alert alert-danger">
+                                There is no hero with { q }
+                            </div>
+                    }
+
+                    {
+                        filteredHeroes.map( hero => (
                             <HeroCard
                                 key={ hero.id }
                                 { ...hero}
