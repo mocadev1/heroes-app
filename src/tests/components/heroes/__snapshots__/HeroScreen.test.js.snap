@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HeroScreen /> tests should show a hero whether a parameter exists and is found 1`] = `
+<div
+  className="row mt-5"
+>
+  <div
+    className="col-4"
+  >
+    <img
+      alt="Daredevil"
+      className="img-thumbnail animate__animated animate__fadeInLeft"
+      src="../assets/heroes/marvel-daredevil.jpg"
+    />
+  </div>
+  <div
+    className="col-8 animate__animated animate__fadeIn"
+  >
+    <h3>
+       
+      Daredevil
+       
+    </h3>
+    <ul
+      className="list-group list-group-flush"
+    >
+      <li
+        className="list-group-item"
+      >
+         
+        <strong>
+           Alter ego: 
+        </strong>
+         
+        Matthew Michael Murdock
+         
+      </li>
+      <li
+        className="list-group-item"
+      >
+         
+        <strong>
+           Publisher: 
+        </strong>
+         
+        Marvel Comics
+         
+      </li>
+      <li
+        className="list-group-item"
+      >
+         
+        <strong>
+           First appearance: 
+        </strong>
+         
+        Daredevil #1
+         
+      </li>
+    </ul>
+    <h5>
+       Characters 
+    </h5>
+    <p>
+       
+      Matthew Michael Murdock
+       
+    </p>
+    <button
+      className="btn btn-outline-info"
+      onClick={[Function]}
+    >
+      Return
+    </button>
+  </div>
+</div>
+`;
